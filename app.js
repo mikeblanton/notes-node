@@ -1,8 +1,4 @@
-console.log('Starting app');
-
 const fs = require('fs');
-const os = require('os');
+const _ = require('lodash');
 
-var user = os.userInfo();
-
-fs.appendFileSync('greetings.txt', `Hello ${user.username}!`);
+const notes = require('./notes.js');
