@@ -10,7 +10,16 @@ var command = argv._[0];
 console.log('Yargs: ', argv);
 
 if (command === 'add') {
-  notes.addNote(argv.title, argv.body);
+  var note = notes.addNote(argv.title, argv.body);
+  if (note) {
+    console.log('Note saved!');
+    console.log('--');
+    console.log(`Title: ${note.title}`);
+    console.log(`Body: ${note.body}`);
+  }
+  else {
+    console.log('Error saving your note');
+  }
 }
 else if (command === 'list') {
   notes.getAll();
