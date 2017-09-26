@@ -7,7 +7,6 @@ const notes = require('./notes.js');
 // Command line params: add, remove, list
 const argv = yargs.argv;
 var command = argv._[0];
-console.log('Yargs: ', argv);
 
 if (command === 'add') {
   var note = notes.addNote(argv.title, argv.body);
@@ -21,7 +20,8 @@ if (command === 'add') {
 }
 else if (command === 'list') {
   var allNotes = notes.getAll();
-  console.log(JSON.stringify(allNotes));
+  console.log(`Printing ${allNotes.length} note(s).`);
+  allNotes.forEach((note) => notes.logNote(note));
 }
 else if (command === 'read') {
   var note = notes.getNote(argv.title);
